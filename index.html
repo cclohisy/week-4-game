@@ -16,56 +16,80 @@
                 <img class="card-img" src="assets/images/cerulean-blue1.jpg" alt="Card image">
                 <div class="card-img-overlay">
                         <h5 class="card-title">Crytal Collectors</h5>
-                        <p class="card-text">Placeholder for instructions. Placeholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructions</p>
-                        <p class="card-text">Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.</p>
+                        <p class="card-text">Placeholder for instructions. Placeholder for instructionsPlaceholder for instructionsPlaceholder
+                                for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder
+                                for instructions</p>
+                        <p class="card-text">Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder
+                                for instructions.Placeholder for instructions.</p>
                 </div>
         </div>
-        <!-- list of game stats -->
-        <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                        Game Stats
-                </div>
-                <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> WINS:
-                                <span id="wins">0</span>
-                        </li>
-                        <li class="list-group-item"> LOSSES:
-                                <span id="loss">0</span>
-                        </li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-        </div>
 
-        <br>
-        <!-- block to display random computer choice -->
-        <p>Match this number:
-                <span id="computerChoice"></span>
-        </p>
-
-        <!-- row to display gem buttons  -->
         <div class="container">
-                <div class = "row">
-                        <img src="..." alt="..." class="img-thumbnail">
-
-                        <img src="..." alt="..." class="img-thumbnail">
-
-                        <img src="..." alt="..." class="img-thumbnail">
+                <!-- row to display computer score and user score  -->
+                <div class="row">
+                        <!-- block to display computer score -->
+                        <div class="col-md-6">
+                                <p>Match this number:
+                                        <span id="computerScore"></span>
+                                </p>
+                        </div>
+                        <!-- block to display user score  -->
+                        <div class="col-md-6">
+                                <p>Your Score:
+                                        <span id="userScore"></span>
+                                </p>
+                        </div>
 
                 </div>
+                <!-- row to display gem buttons  -->
 
+                <div class="row">
+                        <div class="col-sm-2">
+                                <button type="button" class="btn btn-outline-dark">
+                                        <img src="assets/images/2-Star_Crystal.png">
+                                </button>
+                        </div>
+                        <div class="col-sm-2">
+                                <button type="button" class="btn btn-outline-dark">
+                                        <img src="assets/images/2-Star_Crystal.png">
+                                </button>
+                        </div>
+                        <div class="col-sm-2">
+                                <button type="button" class="btn btn-outline-dark">
+                                        <img src="assets/images/2-Star_Crystal.png">
+                                </button>
+                        </div>
+                        <div class="col-sm-2">
+                                <button type="button" class="btn btn-outline-dark">
+                                        <img src="assets/images/2-Star_Crystal.png">
+                                </button>
+                        </div>
+
+                        <!-- list of game stats -->
+                        <div class="col-sm-4">
+                                <div class="card" style="width: 18rem;">
+                                        <div class="card-header">
+                                                Game Stats
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"> WINS:
+                                                        <span id="wins">0</span>
+                                                </li>
+                                                <li class="list-group-item"> LOSSES:
+                                                        <span id="loss">0</span>
+                                                </li>
+                                                <li class="list-group-item"><span id="resultMessage">user message </span></li>
+                                        </ul>
+                                </div>
+                        </div>
+
+
+                </div>
         </div>
-        <script>
 
 
 
 
-
-
-
-
-
-
-        </script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
                 crossorigin="anonymous"></script>
