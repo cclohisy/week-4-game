@@ -16,19 +16,20 @@
         <!-- link to javascript file -->
         <!-- <script src="assets/javascript/game.js"></script> -->
 
+        <!-- supplementary CSS link -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
         <!--  title card with instructions -->
-        <div class="card bg-dark text-white">
-                <img class="card-img" src="assets/images/cerulean-blue1.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                        <h5 class="card-title">Crytal Collectors</h5>
-                        <p class="card-text">Placeholder for instructions. Placeholder for instructionsPlaceholder for instructionsPlaceholder
-                                for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder for instructionsPlaceholder
-                                for instructions</p>
-                        <p class="card-text">Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder
-                                for instructions.Placeholder for instructions.</p>
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                        <h1 class="display-4">Crystal Collectors</h1>
+                        <p class="lead">Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder
+                                for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for
+                                instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.
+                                </p>
                 </div>
         </div>
 
@@ -37,7 +38,7 @@
                 <div class="row ">
                         <!-- block to display computer score -->
                         <div class="col-md-6">
-                                <div class="card text-white bg-secondary mb-3 float-right" style="max-width: 18rem;">
+                                <div class="card text-white bg-secondary mb-3 " style="max-width: 18rem;">
                                         <div class="card-header">MATCH THIS NUMBER</div>
                                         <div class="card-body">
                                                 <h5 class="card-title">
@@ -49,7 +50,7 @@
 
                         <!-- block to display user score  -->
                         <div class="col-md-6">
-                                <div class="card text-white bg-secondary mb-3 float-left" style="max-width: 18rem;">
+                                <div class="card text-white bg-secondary mb-3 " style="max-width: 18rem;">
                                         <div class="card-header">YOUR SCORE: </div>
                                         <div class="card-body">
                                                 <h5 class="card-title">
@@ -165,25 +166,33 @@
                         win++;
                         console.log("win count " + win);
                         //display new vaule of win in #win
-                        $("#win").text(win);                      
+                        $("#win").text(win);
                         //display you won result message in #result
                         $("#result").text(resultWin);
                         //call reset function 
                         reset();
                 }
                 //ELSE IF user score < computer score
-                else if( userScore < computerScore){                        
-                // when user clicks crystal
-                $(".crystal").on("click", function(){
-                        //add value of crystal clicked to previous userScore
-                        userScore = this.userScore + crystal;
-                        console.log("new user score " + userScore);
-                        //display new value of userScore in #userScore
-                        $("userScore").text(userScore);
-
-
-                })
-                
+                else {                                  // if (userScore < computerScore)
+                        // when user clicks crystal
+                        $(".crystal").on("click", function () {
+                                //add value of crystal clicked to previous userScore
+                                userScore = userScore + crystal;
+                                console.log("new user score " + userScore);
+                                //display new value of userScore in #userScore
+                                $("#userScore").text(userScore);
+                        })
+                }
+                //ELSE 
+                if (userScore > computerScore) {                        //else {}
+                        // increase loss +1
+                        loss++;
+                        //display new value of loss in #loss
+                        $("#loss").text(loss);
+                        //display you lost result message in #result
+                        $("#result").text(resultLoss);
+                        //run rest function
+                        reset();
                 };
 
 
