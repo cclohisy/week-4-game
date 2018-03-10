@@ -6,8 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Crystal Guessing Game</title>
+        <!-- link to bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
                 crossorigin="anonymous">
+
+        <!-- Added link to the jQuery Library  not working :( -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- link to javascript file -->
+        <!-- <script src="assets/javascript/game.js"></script> -->
+
 </head>
 
 <body>
@@ -26,18 +34,29 @@
 
         <div class="container">
                 <!-- row to display computer score and user score  -->
-                <div class="row">
+                <div class="row ">
                         <!-- block to display computer score -->
                         <div class="col-md-6">
-                                <p>Match this number:
-                                        <span id="computerScore"></span>
-                                </p>
+                                <div class="card text-white bg-secondary mb-3 float-right" style="max-width: 18rem;">
+                                        <div class="card-header">MATCH THIS NUMBER</div>
+                                        <div class="card-body">
+                                                <h5 class="card-title">
+                                                        <span id="computerScore">Computer Score</span>
+                                                </h5>
+                                        </div>
+                                </div>
                         </div>
+
                         <!-- block to display user score  -->
                         <div class="col-md-6">
-                                <p>Your Score:
-                                        <span id="userScore"></span>
-                                </p>
+                                <div class="card text-white bg-secondary mb-3 float-left" style="max-width: 18rem;">
+                                        <div class="card-header">YOUR SCORE: </div>
+                                        <div class="card-body">
+                                                <h5 class="card-title">
+                                                        <span id="userScore">User Score</span>
+                                                </h5>
+                                        </div>
+                                </div>
                         </div>
 
                 </div>
@@ -73,12 +92,14 @@
                                         </div>
                                         <ul class="list-group list-group-flush">
                                                 <li class="list-group-item"> WINS:
-                                                        <span id="wins">0</span>
+                                                        <span id="win"></span>
                                                 </li>
                                                 <li class="list-group-item"> LOSSES:
-                                                        <span id="loss">0</span>
+                                                        <span id="loss"></span>
                                                 </li>
-                                                <li class="list-group-item"><span id="result">user result (win/loss) message </span></li>
+                                                <li class="list-group-item">
+                                                        <span id="result">user result (win/loss) message </span>
+                                                </li>
                                         </ul>
                                 </div>
                         </div>
@@ -86,10 +107,88 @@
 
                 </div>
         </div>
+        <script>
+                //establish variables
+                //compScore
+                var computerScore = Math.floor(Math.random() * 102) + 1;
+                console.log("comp guesss " + computerScore);
+                //userScore
+                var userScore = 0;
+                console.log("user score " + userScore);
+                //win
+                var win = 0;
+                //loss
+                var loss = 0;
+                //resultWon
+                var resultWin = "You Won!!!!!"
+                //resultLoss
+                var resultLoss = "You Lost :(";
+
+                //set id for each button?, buttons given class of crystal...
+
+
+                //display initial values of..
+                //compScore
+                $("#computerScore").text(computerScore);
+                //userScore
+                $("#userScore").text(userScore);
+                //win
+                $("#win").text(win);
+                //loss
+                $("#loss").text(loss);
+
+                // establish random crystal vaules 1-12 
+                var crystal = Math.floor(Math.random() * 12) + 1;
+                console.log("crystal value " + crystal);
+                //assign different random value to each crystal (4 diff vaules for four crystals)...TBD 
+
+                //create function to reset game - will run after user win or loss
+                function reset() {
+                        //set user score to 0 
+                        userScore = 0
+                        //display new user score 
+                        $("#userScore").text(userScore);
+                        console.log("user score " + userScore);
+                        //generate new random computer score 
+                        computerScore = Math.floor(Math.random() * 102) + 19;
+                        console.log("comp guesss " + computerScore);
+                        //display new computer score 
+                        $("#computerScore").text(computerScore);
+                        // generate new random vaules for each crystal
+                        crystal = Math.floor(Math.random() * 12) + 1;
+                        console.log("crystal value " + crystal);
+                };
+
+                //IF user score == computer score 
+                if (userScore === computerScore) {
+                        //increase wins +1
+                        win++;
+                        console.log("win count " + win);
+                        //display new vaule of win in #win
+                        $("#win").text(win);                      
+                        //display you won result message in #result
+                        $("#result").text(resultWin);
+                        //call reset function 
+                        reset();
+                }
+                //ELSE IF user score < computer score
+                else if( userScore < computerScore){                        
+                // when user clicks crystal
+                $(".crystal").on("click", function(){
+                        //add value of crystal clicked to previous userScore
+                        userScore = this.userScore + crystal;
+                        console.log("new user score " + userScore);
+                        //display new value of userScore in #userScore
+                        $("userScore").text(userScore);
+
+
+                })
+                
+                };
 
 
 
-
+        </script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
                 crossorigin="anonymous"></script>
@@ -97,6 +196,8 @@
                 crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
