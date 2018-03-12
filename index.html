@@ -14,7 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <!-- link to javascript file -->
-        <!-- <script src="assets/javascript/game.js"></script> -->
+        <script src="assets/javascript/game.js"></script>
 
         <!-- supplementary CSS link -->
         <link rel="stylesheet" href="assets/css/style.css">
@@ -29,7 +29,7 @@
                         <p class="lead">Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder
                                 for instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for
                                 instructions.Placeholder for instructions.Placeholder for instructions.Placeholder for instructions.
-                                </p>
+                        </p>
                 </div>
         </div>
 
@@ -65,22 +65,22 @@
 
                 <div class="row">
                         <div class="col-sm-2 ">
-                                <button type="button" class="btn btn-outline-dark crystal">
+                                <button type="button" id="crys1" class="btn btn-outline-dark crystal">
                                         <img src="assets/images/2-Star_Crystal.png">
                                 </button>
                         </div>
                         <div class="col-sm-2">
-                                <button type="button" class="btn btn-outline-dark crystal">
-                                        <img src="assets/images/2-Star_Crystal.png">
+                                <button type="button" id="crys2" class="btn btn-outline-dark crystal">
+                                        <img src="assets/images/Crystal_iso8.png">
                                 </button>
                         </div>
                         <div class="col-sm-2">
-                                <button type="button" class="btn btn-outline-dark crystal">
-                                        <img src="assets/images/2-Star_Crystal.png">
+                                <button type="button" id="crys3" class="btn btn-outline-dark crystal">
+                                        <img src="assets/images/Crystal.png">
                                 </button>
                         </div>
                         <div class="col-sm-2">
-                                <button type="button" class="btn btn-outline-dark crystal">
+                                <button type="button" id="crys4" class="btn btn-outline-dark crystal">
                                         <img src="assets/images/2-Star_Crystal.png">
                                 </button>
                         </div>
@@ -99,7 +99,7 @@
                                                         <span id="loss"></span>
                                                 </li>
                                                 <li class="list-group-item">
-                                                        <span id="result">user result (win/loss) message </span>
+                                                        <span id="result"> </span>
                                                 </li>
                                         </ul>
                                 </div>
@@ -108,99 +108,10 @@
 
                 </div>
         </div>
-        <script>
-                //establish variables
-                //compScore
-                var computerScore = Math.floor(Math.random() * 102) + 1;
-                console.log("comp guesss " + computerScore);
-                //userScore
-                var userScore = 0;
-                console.log("user score " + userScore);
-                //win
-                var win = 0;
-                //loss
-                var loss = 0;
-                //resultWon
-                var resultWin = "You Won!!!!!"
-                //resultLoss
-                var resultLoss = "You Lost :(";
+        
 
-                //set id for each button?, buttons given class of crystal...
+        <!-- <script type = "text/javscript" src="assets/javascript/game.js"></script> -->
 
-
-                //display initial values of..
-                //compScore
-                $("#computerScore").text(computerScore);
-                //userScore
-                $("#userScore").text(userScore);
-                //win
-                $("#win").text(win);
-                //loss
-                $("#loss").text(loss);
-
-                // establish random crystal vaules 1-12 
-                var crystal = Math.floor(Math.random() * 12) + 1;
-                console.log("crystal value " + crystal);
-                //assign different random value to each crystal (4 diff vaules for four crystals)...TBD 
-
-                //create function to reset game - will run after user win or loss
-                function reset() {
-                        //set user score to 0 
-                        userScore = 0
-                        //display new user score 
-                        $("#userScore").text(userScore);
-                        console.log("user score " + userScore);
-                        //generate new random computer score 
-                        computerScore = Math.floor(Math.random() * 102) + 19;
-                        console.log("comp guesss " + computerScore);
-                        //display new computer score 
-                        $("#computerScore").text(computerScore);
-                        // generate new random vaules for each crystal
-                        crystal = Math.floor(Math.random() * 12) + 1;
-                        console.log("crystal value " + crystal);
-                };
-
-                //IF user score == computer score 
-                if (userScore === computerScore) {
-                        //increase wins +1
-                        win++;
-                        console.log("win count " + win);
-                        //display new vaule of win in #win
-                        $("#win").text(win);
-                        //display you won result message in #result
-                        $("#result").text(resultWin);
-                        //call reset function 
-                        reset();
-                }
-                //ELSE IF user score < computer score
-                else {                                  // if (userScore < computerScore)
-                        // when user clicks crystal
-                        $(".crystal").on("click", function () {
-                                //add value of crystal clicked to previous userScore
-                                userScore = userScore + crystal;
-                                console.log("new user score " + userScore);
-                                //display new value of userScore in #userScore
-                                $("#userScore").text(userScore);
-                        })
-                }
-                //ELSE 
-                if (userScore > computerScore) {                        //else {}
-                        // increase loss +1
-                        loss++;
-                        //display new value of loss in #loss
-                        $("#loss").text(loss);
-                        //display you lost result message in #result
-                        $("#result").text(resultLoss);
-                        //run rest function
-                        reset();
-                };
-
-
-
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
                 crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"

@@ -1,22 +1,19 @@
 //establish variables
 //compScore
-//establish possible computer scores vaules 19-120
-var computerScore = Math.floor(Math.random() * 102) + 19;
+$(document).ready(function(){
+var computerScore = Math.floor(Math.random() * 102) + 1;
 console.log("comp guesss " + computerScore);
-//display inital computer score - see below    
 //userScore
 var userScore = 0;
+console.log("user score " + userScore);
 //win
 var win = 0;
 //loss
 var loss = 0;
 //resultWon
-var resultWon = "You Won!!!!!"
+var resultWin = "You Won!!!!!"
 //resultLoss
 var resultLoss = "You Lost :(";
-
-//set id for each button?, buttons given class of crystal...
-
 
 //display initial values of..
 //compScore
@@ -27,59 +24,212 @@ $("#userScore").text(userScore);
 $("#win").text(win);
 //loss
 $("#loss").text(loss);
-//result
-
 
 // establish random crystal vaules 1-12 
-var crystal = Math.floor(Math.random() * 12) + 1;
-console.log("crystal value " + crystal);
 //assign different random value to each crystal (4 diff vaules for four crystals)...TBD 
+var crystal = {
+
+        crys1: Math.floor(Math.random() * 12) + 1,
+
+        crys2: Math.floor(Math.random() * 12) + 1,
+
+        crys3: Math.floor(Math.random() * 12) + 1,
+
+        crys4: Math.floor(Math.random() * 12) + 1,
+
+};
+console.log("crystal 1 value " + (crystal.crys1));
+console.log("crystal 2 value " + (crystal.crys2));
+console.log("crystal 3 value " + (crystal.crys3));
+console.log("crystal 4 value " + (crystal.crys4));
 
 
 //create function to reset game - will run after user win or loss
 function reset() {
-    //set user score to 0 
-    userScore = 0
-    //display new user score 
-    $("#userScore").text(userScore);
-    //generate new random computer score 
-    computerScore = Math.floor(Math.random() * 102) + 19;
-    console.log("comp guesss " + computerScore);
-    //display new computer score 
-    $("#computerScore").text(computerScore);
-    // generate new random vaules for each crystal
-    crystal = Math.floor(Math.random() * 12) + 1;
-    console.log("crystal value " + crystal);
+        //set user score to 0 
+        userScore = 0
+        //display new user score 
+        $("#userScore").text(userScore);
+        console.log("user score " + userScore);
+        //generate new random computer score 
+        computerScore = Math.floor(Math.random() * 102) + 19;
+        console.log("comp guesss " + computerScore);
+        //display new computer score 
+        $("#computerScore").text(computerScore);
+        // generate new random vaules for each crystal
+        crystal = {
+
+                crys1: Math.floor(Math.random() * 12) + 1,
+
+                crys2: Math.floor(Math.random() * 12) + 1,
+
+                crys3: Math.floor(Math.random() * 12) + 1,
+
+                crys4: Math.floor(Math.random() * 12) + 1,
+
+        };
+        console.log("crystal 1 value " + (crystal.crys1));
+        console.log("crystal 2 value " + (crystal.crys2));
+        console.log("crystal 3 value " + (crystal.crys3));
+        console.log("crystal 4 value " + (crystal.crys4));
+
 };
+//when user clicks crystal 1 run function
+$("#crys1").on("click", function () {
 
-
-
-//create function to run on user click of crystals userScore    
-        //IF user score == computer score 
-             // increase win +1
-                //display new vaule of win in #win 
-            //display you won result message in #result
-            //run reset function
-        if (userGuess === computerGuess) {
-            //increase wins +1
-            win++;
-            //display new vaule of win in html
-            document.getElementById("wins").innerHTML = win;
-            //call reset function 
-            reset();
-        }
-        //  else if (){};
-        //ELSE IF user score < computer score 
-        // when user clicks crystal
+        //IF user score < computer score
+        if (userScore < computerScore) {
                 //add value of crystal clicked to previous userScore
+                userScore = userScore + (crystal.crys1);
                 //display new value of userScore in #userScore
-           
+                $("#userScore").text(userScore);
+
+        }
 
         //ELSE 
-            // increase loss +1
+        else {
+                // increase loss +1
+                loss++;
                 //display new value of loss in #loss
-            //display you lost result message in #result
-            //run rest function
+                $("#loss").text(loss);
+                //display you lost result message in #result
+                $("#result").text(resultLoss);
+                //run rest function
+                reset();
+        }
+
+        //IF user score == computer score 
+        if (userScore === computerScore) {
+                //increase wins +1
+                win++;
+                //display new vaule of win in #win
+                $("#win").text(win);
+                //display you won result message in #result
+                $("#result").text(resultWin);
+                //call reset function 
+                reset();
+        }
+});
+
+//when user clicks crystal 2 run function
+$("#crys2").on("click", function () {
+
+        //IF user score < computer score
+        if (userScore < computerScore) {
+                // $(".crystal").on("click", function () {
+                //add value of crystal clicked to previous userScore
+                userScore = userScore + (crystal.crys2);
+                //display new value of userScore in #userScore
+                $("#userScore").text(userScore);
+
+                // })
+        }
+
+        //ELSE 
+        else {
+                // increase loss +1
+                loss++;
+                //display new value of loss in #loss
+                $("#loss").text(loss);
+                //display you lost result message in #result
+                $("#result").text(resultLoss);
+                //run rest function
+                reset();
+        }
+
+        //IF user score == computer score 
+        if (userScore === computerScore) {
+                //increase wins +1
+                win++;
+                //display new vaule of win in #win
+                $("#win").text(win);
+                //display you won result message in #result
+                $("#result").text(resultWin);
+                //call reset function 
+                reset();
+        }
+});
+
+//when user clicks crystal run function
+$("#crys3").on("click", function () {
+
+        //IF user score < computer score
+        if (userScore < computerScore) {
+                // $(".crystal").on("click", function () {
+                //add value of crystal clicked to previous userScore
+                userScore = userScore + (crystal.crys3);
+                //display new value of userScore in #userScore
+                $("#userScore").text(userScore);
+
+                // })
+        }
+
+        //ELSE 
+        else {
+                // increase loss +1
+                loss++;
+                //display new value of loss in #loss
+                $("#loss").text(loss);
+                //display you lost result message in #result
+                $("#result").text(resultLoss);
+                //run rest function
+                reset();
+        }
+
+        //IF user score == computer score 
+        if (userScore === computerScore) {
+                //increase wins +1
+                win++;
+                //display new vaule of win in #win
+                $("#win").text(win);
+                //display you won result message in #result
+                $("#result").text(resultWin);
+                //call reset function 
+                reset();
+        }
+});
+
+//when user clicks crystal run function
+$("#crys4").on("click", function () {
+
+        //IF user score < computer score
+        if (userScore < computerScore) {
+                // $(".crystal").on("click", function () {
+                //add value of crystal clicked to previous userScore
+                userScore = userScore + (crystal.crys4);
+                //display new value of userScore in #userScore
+                $("#userScore").text(userScore);
+
+                // })
+        }
+
+        //ELSE 
+        else {
+                // increase loss +1
+                loss++;
+                //display new value of loss in #loss
+                $("#loss").text(loss);
+                //display you lost result message in #result
+                $("#result").text(resultLoss);
+                //run rest function
+                reset();
+        }
+
+        //IF user score == computer score 
+        if (userScore === computerScore) {
+                //increase wins +1
+                win++;
+                //display new vaule of win in #win
+                $("#win").text(win);
+                //display you won result message in #result
+                $("#result").text(resultWin);
+                //call reset function 
+                reset();
+        }
+});
+})
+
+
 
 
 
